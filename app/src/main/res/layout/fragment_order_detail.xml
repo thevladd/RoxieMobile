@@ -1,22 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.view.fragments.OrdersFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/text_dashboard"
+    <data>
+
+        <variable
+            name="order"
+            type="ru.ustal.roxiemobile.domain.model.view.OrderModelView" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        tools:context=".presentation.view.fragments.OrdersFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@string/vehicle_content_description"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.MaterialComponents.Tooltip" />
+
+            <TextView
+                android:id="@+id/tv_title_start_address"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/start_address"
+                android:textColor="@color/teal_200" />
+
+            <TextView
+                android:id="@+id/startAddressTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{order.startAddress}" />
+
+            <TextView
+                android:id="@+id/tv_title_end_address"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/end_address"
+                android:textColor="@color/teal_200" />
+
+            <TextView
+                android:id="@+id/endAddressTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{order.endAddress}" />
+
+            <TextView
+                android:id="@+id/tv_title_order_time"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/order_time"
+                android:textColor="@color/teal_200" />
+
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{order.orderTime}" />
+
+            <TextView
+                android:id="@+id/costTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{order.price}"
+                android:textColor="@color/priceTextColor" />
+
+            <TextView
+                android:id="@+id/tv_title_driverNameTextView"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/driverNameTextView"
+                android:textColor="@color/teal_200" />
+
+            <TextView
+                android:id="@+id/driverNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{order.vehicle.driverName}" />
+
+            <TextView
+                android:id="@+id/tv_title_carModelTextView"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/carModelTextView"
+                android:textColor="@color/teal_200" />
+
+            <TextView
+                android:id="@+id/carModelTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{order.vehicle.modelName}" />
+
+            <TextView
+                android:id="@+id/tv_title_carNumberTextView"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_title_carNumberTextView"
+                android:textColor="@color/teal_200" />
+
+            <TextView
+                android:id="@+id/carNumberTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{order.vehicle.regNumber}" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

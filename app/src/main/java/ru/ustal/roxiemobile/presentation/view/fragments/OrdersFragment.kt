@@ -40,7 +40,7 @@ class OrdersFragment : Fragment() {
         order?.let {
             findNavController().navigate(
                 R.id.action_navigation_orders_to_navigation_order_detail,
-                bundleOf("item" to it)
+                bundleOf("order" to it)
             )
         }
     }

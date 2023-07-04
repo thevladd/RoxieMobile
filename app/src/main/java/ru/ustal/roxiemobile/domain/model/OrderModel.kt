@@ -1,17 +1,15 @@
 package ru.ustal.roxiemobile.domain.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import java.io.Serializable
 
-@Parcelize
 data class OrderModel(
-    val endAddress: EndAddressModel,
+    val endAddress: AddressModel,
     val id: Int,
     val orderTime: String,
     val price: PriceModel,
-    val startAddress: StartAddressModel,
+    val startAddress: AddressModel,
     val vehicle: VehicleModel
-) : Parcelable
+) : Serializable
 
 
 

@@ -5,16 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import ru.ustal.roxiemobile.R
 import ru.ustal.roxiemobile.databinding.ItemOrderBinding
-import ru.ustal.roxiemobile.domain.model.OrderModel
+import ru.ustal.roxiemobile.domain.model.view.OrderModelView
 import ru.ustal.roxiemobile.presentation.view.apadters.delegate_adapter.BaseDelegateAdapter
 import ru.ustal.roxiemobile.presentation.view.apadters.delegate_adapter.BaseViewHolder
 
 class OrdersAdapter :
-    BaseDelegateAdapter<OrdersAdapter.OrderViewHolder, OrderModel>() {
+    BaseDelegateAdapter<OrdersAdapter.OrderViewHolder, OrderModelView>() {
 
     override fun onBindViewHolder(
         view: View,
-        item: OrderModel,
+        item: OrderModelView,
         viewHolder: OrderViewHolder
     ) {
         viewHolder.binding.order = item
@@ -29,7 +29,7 @@ class OrdersAdapter :
     }
 
     override fun isForViewType(items: List<Any>, position: Int): Boolean {
-        return items[position] is OrderModel
+        return items[position] is OrderModelView
     }
 
     class OrderViewHolder(

@@ -1,9 +1,19 @@
 package ru.ustal.roxiemobile.domain.model
 
-import android.os.Parcelable
+import android.icu.util.Currency
+import java.io.Serializable
+import kotlin.math.pow
 
-@kotlinx.parcelize.Parcelize
 data class PriceModel(
     val amount: Int,
     val currency: String
-) : Parcelable
+) : Serializable {
+    fun formatPrice(): String {
+
+        val currency: Currency = Currency.getInstance(currency)
+        val decimalPlaces: Int = currency.defaultFractionDigits
+        val amountInCurrency = amount / 10.0.pow(decimalPlaces.toDouble())
+        return "Сумма: $amountInCurrency ${currency.symbol}"
+    }
+
+}

@@ -5,7 +5,7 @@
 
         <variable
             name="order"
-            type="ru.ustal.roxiemobile.domain.model.OrderModel" />
+            type="ru.ustal.roxiemobile.domain.model.view.OrderModelView" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -25,20 +25,44 @@
             android:padding="16dp">
 
             <TextView
+                android:id="@+id/tv_title_start_address"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/start_address"
+                android:textColor="@color/teal_200" />
+
+            <TextView
                 android:id="@+id/tv_start_address"
                 style="@style/TextAppearance.MaterialComponents.Subtitle1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{String.valueOf(order.startAddress.city) + ' ' + String.valueOf(order.startAddress.address)}"
+                android:text="@{order.startAddress}"
                 android:textColor="@color/startAddressTextColor" />
+
+            <TextView
+                android:id="@+id/tv_title_end_address"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/end_address"
+                android:textColor="@color/teal_200" />
 
             <TextView
                 android:id="@+id/tv_end_address"
                 style="@style/TextAppearance.MaterialComponents.Subtitle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{String.valueOf(order.endAddress.city) + ' ' + String.valueOf(order.endAddress.address)}"
+                android:text="@{order.endAddress}"
                 android:textColor="@color/endAddressTextColor" />
+
+            <TextView
+                android:id="@+id/tv_title_order_time"
+                style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/order_time"
+                android:textColor="@color/teal_200" />
 
             <TextView
                 android:id="@+id/tv_order_time"
@@ -49,11 +73,11 @@
                 android:textColor="@color/orderTimeTextColor" />
 
             <TextView
-                android:id="@+id/price"
+                android:id="@+id/tv_price"
                 style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{order.price.currency}"
+                android:text="@{order.price}"
                 android:textColor="@color/priceTextColor" />
 
         </LinearLayout>

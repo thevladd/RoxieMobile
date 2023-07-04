@@ -3,4 +3,13 @@
     <string name="title_order_detail">Order detail</string>
     <string name="title_orders">Orders</string>
     <string name="get_order_error">Ошибка при получении заказов</string>
+    <string name="get_image_error">Ошибка при получении фото</string>
+    <string name="vehicle_content_description">vehicle</string>
+    <string name="start_address">Начальный адресс:</string>
+    <string name="end_address">Конечный адресс:</string>
+    <string name="order_time">Время заказа:</string>
+    <string name="price">Цена:</string>
+    <string name="tv_title_carNumberTextView">Номер автомобиля:</string>
+    <string name="carModelTextView">Марка автомобиля:</string>
+    <string name="driverNameTextView">Имя водителя:</string>
 </resources>

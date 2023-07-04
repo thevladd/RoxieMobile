@@ -9,7 +9,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import ru.ustal.roxiemobile.App
 import ru.ustal.roxiemobile.R
-import ru.ustal.roxiemobile.domain.model.OrderModel
+import ru.ustal.roxiemobile.domain.model.view.OrderModelView
 import ru.ustal.roxiemobile.domain.usecases.GetOrdersUseCase
 import ru.ustal.roxiemobile.utils.OperationResult
 import javax.inject.Inject
@@ -25,8 +25,8 @@ class OrdersViewModel(private val app: Application) : AndroidViewModel(app) {
 
     private val disposable: CompositeDisposable = CompositeDisposable()
 
-    private val _orders: MutableLiveData<OperationResult<List<OrderModel>>> = MutableLiveData()
-    val orders: LiveData<OperationResult<List<OrderModel>>> = _orders
+    private val _orders: MutableLiveData<OperationResult<List<OrderModelView>>> = MutableLiveData()
+    val orders: LiveData<OperationResult<List<OrderModelView>>> = _orders
 
     fun initData() {
         disposable.add(
@@ -45,9 +45,9 @@ class OrdersViewModel(private val app: Application) : AndroidViewModel(app) {
         )
     }
 
-    fun getOrderByPosition(position: Int): OrderModel? {
+    fun getOrderByPosition(position: Int): OrderModelView? {
         return if (_orders.value is OperationResult.Success)
-            (_orders.value as OperationResult.Success<List<OrderModel>>).data[position]
+            (_orders.value as OperationResult.Success<List<OrderModelView>>).data[position]
         else null
     }
 

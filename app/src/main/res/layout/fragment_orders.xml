@@ -19,8 +19,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_orders"
             android:layout_width="match_parent"
-            android:splitMotionEvents="false"
             android:layout_height="match_parent"
+            android:splitMotionEvents="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:recyclerItems="@{viewModel.orders}" />
 
