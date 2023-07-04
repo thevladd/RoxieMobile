@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Roxie Mobile</string>
+    <string name="title_order_detail">Order detail</string>
+    <string name="title_orders">Orders</string>
+    <string name="get_order_error">Ошибка при получении заказов</string>
+</resources>
