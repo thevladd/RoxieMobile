@@ -2,7 +2,7 @@ package ru.ustal.roxiemobile.domain.mapper
 
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
-import ru.ustal.roxiemobile.domain.model.OrderModel
+import ru.ustal.roxiemobile.domain.model.roxi.order.OrderModel
 import ru.ustal.roxiemobile.domain.model.view.OrderModelView
 import ru.ustal.roxiemobile.utils.DateUtils
 

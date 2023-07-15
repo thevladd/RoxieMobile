@@ -4,7 +4,7 @@ import io.reactivex.Single
 import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Path
-import ru.ustal.roxiemobile.domain.model.OrderModel
+import ru.ustal.roxiemobile.domain.model.roxi.order.OrderModel
 
 interface RoxiApi {
     @GET("careers/test/orders.json")
