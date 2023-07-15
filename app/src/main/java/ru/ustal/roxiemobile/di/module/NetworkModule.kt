@@ -8,6 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.ustal.roxiemobile.data.remote.PixelsApi
 import ru.ustal.roxiemobile.data.remote.RoxiApi
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -45,18 +46,29 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofitBuilder(okHttpClient: OkHttpClient): Retrofit.Builder {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://www.roxiemobile.ru/")
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
     }
 
     @Provides
     @Singleton
-    fun provideApi(retrofit: Retrofit): RoxiApi {
-        return retrofit.create(RoxiApi::class.java)
+    fun provideRoxiApi(retrofitBuilder: Retrofit.Builder): RoxiApi {
+        return retrofitBuilder
+            .baseUrl("https://www.roxiemobile.ru/")
+            .build()
+            .create(RoxiApi::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun providePixelsApi(retrofitBuilder: Retrofit.Builder): PixelsApi {
+        return retrofitBuilder
+            .baseUrl("https://api.pexels.com/")
+            .build()
+            .create(PixelsApi::class.java)
+    }
+
 }

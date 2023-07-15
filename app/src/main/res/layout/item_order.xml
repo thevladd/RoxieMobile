@@ -5,7 +5,7 @@
 
         <variable
             name="order"
-            type="ru.ustal.roxiemobile.domain.model.OrderModel" />
+            type="ru.ustal.roxiemobile.domain.model.roxi.order.OrderModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

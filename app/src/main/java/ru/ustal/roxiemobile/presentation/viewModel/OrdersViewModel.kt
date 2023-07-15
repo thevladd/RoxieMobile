@@ -9,7 +9,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import ru.ustal.roxiemobile.App
 import ru.ustal.roxiemobile.R
-import ru.ustal.roxiemobile.domain.model.OrderModel
+import ru.ustal.roxiemobile.domain.model.roxi.order.OrderModel
 import ru.ustal.roxiemobile.domain.usecases.GetOrdersUseCase
 import ru.ustal.roxiemobile.utils.OperationResult
 import javax.inject.Inject

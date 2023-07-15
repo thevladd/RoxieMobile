@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import ru.ustal.roxiemobile.databinding.FragmentOrderDetailBinding
-import ru.ustal.roxiemobile.domain.model.OrderModel
+import ru.ustal.roxiemobile.domain.model.roxi.order.OrderModel
 import ru.ustal.roxiemobile.presentation.viewModel.OrderDetailViewModel
 
 class OrderDetailFragment : Fragment() {

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import ru.ustal.roxiemobile.R
 import ru.ustal.roxiemobile.databinding.ItemOrderBinding
-import ru.ustal.roxiemobile.domain.model.OrderModel
+import ru.ustal.roxiemobile.domain.model.roxi.order.OrderModel
 import ru.ustal.roxiemobile.presentation.view.apadters.delegate_adapter.BaseDelegateAdapter
 import ru.ustal.roxiemobile.presentation.view.apadters.delegate_adapter.BaseViewHolder
 

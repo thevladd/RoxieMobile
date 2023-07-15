@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -19,10 +20,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_orders"
             android:layout_width="match_parent"
-            android:splitMotionEvents="false"
             android:layout_height="match_parent"
+            android:splitMotionEvents="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:recyclerItems="@{viewModel.orders}" />
+            app:recyclerItems="@{viewModel.orders}"
+            tools:listitem="@layout/item_order" />
 
         <TextView
             android:id="@+id/tv_error"

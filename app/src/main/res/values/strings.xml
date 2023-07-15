@@ -2,5 +2,7 @@
     <string name="app_name">Roxie Mobile</string>
     <string name="title_order_detail">Order detail</string>
     <string name="title_orders">Orders</string>
+    <string name="title_pixels">Pixels</string>
     <string name="get_order_error">Ошибка при получении заказов</string>
+    <string name="pixels_api_key">DKInpjvuTXlgLoYNfjAPfIQuFQaZkeoxvr4giDm8EpeNf01RkhbWC7jh</string>
 </resources>

@@ -1,4 +1,4 @@
-package ru.ustal.roxiemobile.domain.model
+package ru.ustal.roxiemobile.domain.model.roxi.order
 
 import android.os.Parcelable
 
