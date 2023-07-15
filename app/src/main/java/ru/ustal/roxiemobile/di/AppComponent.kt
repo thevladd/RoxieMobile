@@ -8,6 +8,7 @@ import ru.ustal.roxiemobile.di.module.RepositoryModule
 import ru.ustal.roxiemobile.di.module.UseCaseModule
 import ru.ustal.roxiemobile.presentation.viewModel.OrderDetailViewModel
 import ru.ustal.roxiemobile.presentation.viewModel.OrdersViewModel
+import ru.ustal.roxiemobile.presentation.viewModel.PixelsViewModel
 import javax.inject.Singleton
 
 @Singleton
@@ -29,5 +30,6 @@ interface AppComponent {
 
     fun inject(vm: OrderDetailViewModel)
     fun inject(vm: OrdersViewModel)
+    fun inject(vm: PixelsViewModel)
 
 }

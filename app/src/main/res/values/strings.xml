@@ -2,6 +2,7 @@
     <string name="app_name">Roxie Mobile</string>
     <string name="title_order_detail">Order detail</string>
     <string name="title_orders">Orders</string>
+    <string name="title_pixels">Pixels</string>
     <string name="get_order_error">Ошибка при получении заказов</string>
     <string name="get_image_error">Ошибка при получении фото</string>
     <string name="vehicle_content_description">vehicle</string>
@@ -12,4 +13,5 @@
     <string name="tv_title_carNumberTextView">Номер автомобиля:</string>
     <string name="carModelTextView">Марка автомобиля:</string>
     <string name="driverNameTextView">Имя водителя:</string>
+    <string name="pixels_api_key">DKInpjvuTXlgLoYNfjAPfIQuFQaZkeoxvr4giDm8EpeNf01RkhbWC7jh</string>
 </resources>
