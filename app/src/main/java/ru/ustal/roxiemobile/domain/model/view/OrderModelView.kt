@@ -1,6 +1,6 @@
 package ru.ustal.roxiemobile.domain.model.view
 
-import ru.ustal.roxiemobile.domain.model.VehicleModel
+import ru.ustal.roxiemobile.domain.model.roxi.order.VehicleModel
 import java.io.Serializable
 
 data class OrderModelView(
