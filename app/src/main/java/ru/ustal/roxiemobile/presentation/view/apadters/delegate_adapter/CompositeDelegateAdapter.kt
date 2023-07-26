@@ -1,73 +1,66 @@
 package ru.ustal.roxiemobile.presentation.view.apadters.delegate_adapter
 
-import android.annotation.SuppressLint
 import android.util.SparseArray
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import ru.ustal.roxiemobile.utils.sparseArrayToList
 
 
-class CompositeDelegateAdapter(
-    private val typeToAdapterMap: SparseArray<IDelegateAdapter<out RecyclerView.ViewHolder>>,
+open class CompositeDelegateAdapter(
+    adapters: SparseArray<IDelegateAdapter>,
     private val onItemClick: (Int) -> Unit
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    companion object {
-        private const val FIRST_VIEW_TYPE = 0
-    }
+    protected open var adapterState = AdaptersState(adapters.sparseArrayToList())
 
-    private var data: List<Any> = ArrayList()
+    override fun getItemViewType(itemPosition: Int): Int =
+        adapterState.getAdapterPosition(itemPosition)
 
-    override fun getItemViewType(position: Int): Int {
-        for (i in FIRST_VIEW_TYPE until typeToAdapterMap.size()) {
-            val delegate = typeToAdapterMap.valueAt(i)
-            if (delegate.isForViewType(data, position)) {
-                return typeToAdapterMap.keyAt(i)
-            }
-        }
-        throw NullPointerException("Can not get viewType for position $position")
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
+        adapterState.getAdapter(viewType).onCreateViewHolder(parent, viewType)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return typeToAdapterMap.get(viewType)?.onCreateViewHolder(parent, viewType)
-            ?: throw NullPointerException("Can not find adapter for viewType $viewType")
-    }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) =
+        adapterState.getAdapter(getItemViewType(position))
+            .onBindViewHolder(holder, adapterState.data, position)
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val delegate = typeToAdapterMap.get(getItemViewType(position))
-            ?: throw NullPointerException("Can not find adapter for position $position")
-        delegate.onBindViewHolder(holder, data, position)
-    }
+    override fun onViewRecycled(holder: RecyclerView.ViewHolder) =
+        adapterState.getAdapter(holder.itemViewType).onRecycled(holder)
 
-    override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
-        typeToAdapterMap.get(holder.itemViewType)?.onRecycled(holder)
+    open fun swapData(data: List<Any>) {
+        val newAdapterState = adapterState.copy(data = data)
+        val diffCallback = DiffUtilCallback(adapterState, newAdapterState)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        adapterState = newAdapterState
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onViewAttachedToWindow(holder: RecyclerView.ViewHolder) {
-        holder.itemView.setOnClickListener { onItemClick.invoke(holder.adapterPosition) }
-        super.onViewAttachedToWindow(holder)
+        holder.itemView.setOnClickListener { onItemClick.invoke(holder.absoluteAdapterPosition) }
+        adapterState.getAdapter(holder.itemViewType).onAttachedToWindow(
+            holder,
+            adapterState.itemContent(holder.absoluteAdapterPosition)
+        )
     }
 
     override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {
         holder.itemView.setOnClickListener(null)
-        super.onViewDetachedFromWindow(holder)
+
+        adapterState.getAdapter(holder.itemViewType).onDetachedFromWindow(
+            holder
+        )
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun swapData(data: List<Any>) {
-        this.data = data
-        notifyDataSetChanged()
-    }
+    override fun getItemCount(): Int = adapterState.data.size
 
-    override fun getItemCount(): Int = data.size
 
     class Builder {
         private var onItemClick: (Int) -> Unit = {}
         private var count: Int = 0
-        private val typeToAdapterMap: SparseArray<IDelegateAdapter<out RecyclerView.ViewHolder>> =
-            SparseArray()
+        private val typeToAdapterMap: SparseArray<IDelegateAdapter> = SparseArray()
 
-        fun add(delegateAdapter: IDelegateAdapter<out RecyclerView.ViewHolder>): Builder {
+        fun add(delegateAdapter: IDelegateAdapter): Builder {
             typeToAdapterMap.put(count++, delegateAdapter)
             return this
         }
@@ -84,4 +77,5 @@ class CompositeDelegateAdapter(
             return CompositeDelegateAdapter(typeToAdapterMap, onItemClick)
         }
     }
+
 }

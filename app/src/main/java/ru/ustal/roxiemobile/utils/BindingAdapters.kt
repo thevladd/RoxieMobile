@@ -14,10 +14,12 @@ fun setErrorText(view: TextView, dataObject: Any?) {
 }
 
 @BindingAdapter("recyclerItems")
-fun setRecyclerItems(recyclerView: RecyclerView, dataObject: Any?) {
-    recyclerView.isVisible = dataObject !is OperationResult.OperationError
-    if (dataObject is OperationResult.Success<*> && recyclerView.adapter is CompositeDelegateAdapter) {
-        (recyclerView.adapter as CompositeDelegateAdapter).swapData(dataObject.data as List<Any>)
+@Suppress("UNCHECKED_CAST")
+fun setRecyclerItems(recyclerView: RecyclerView, data: Any?) {
+    recyclerView.isVisible = data !is OperationResult.OperationError
+    ((data as? OperationResult.Success<*>)?.data as? List<Any>)?.let {
+        (recyclerView.adapter as? CompositeDelegateAdapter)?.swapData(
+            it
+        )
     }
-
 }

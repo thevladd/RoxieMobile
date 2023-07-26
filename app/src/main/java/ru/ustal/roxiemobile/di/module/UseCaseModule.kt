@@ -4,9 +4,9 @@ import dagger.Module
 import dagger.Provides
 import ru.ustal.roxiemobile.domain.repository.ImageRepository
 import ru.ustal.roxiemobile.domain.repository.OrderRepository
-import ru.ustal.roxiemobile.domain.usecases.GetImageUseCase
 import ru.ustal.roxiemobile.domain.repository.PhotoRepository
 import ru.ustal.roxiemobile.domain.repository.VideoRepository
+import ru.ustal.roxiemobile.domain.usecases.GetImageUseCase
 import ru.ustal.roxiemobile.domain.usecases.GetOrdersUseCase
 import ru.ustal.roxiemobile.domain.usecases.GetPhotosUseCase
 import ru.ustal.roxiemobile.domain.usecases.GetVideosUseCase

@@ -4,6 +4,7 @@
     <string name="title_orders">Orders</string>
     <string name="title_pixels">Pixels</string>
     <string name="get_order_error">Ошибка при получении заказов</string>
+    <string name="get_video_error">Ошибка при получении видео</string>
     <string name="get_image_error">Ошибка при получении фото</string>
     <string name="vehicle_content_description">vehicle</string>
     <string name="start_address">Начальный адресс:</string>
